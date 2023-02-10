@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "peerjs": "^1.4.7"
+  },
+  "devDependencies": {
+    "eslint": "^8.34.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}
