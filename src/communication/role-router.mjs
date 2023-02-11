@@ -39,6 +39,21 @@ class Host extends User {
     super(name); // Call the parent constructor
     const peerID = 'bl-podium-host-' + Math.random().toString(36).substring(2, 7); // Generate a random ID for the host
     this.host = new Peer(peerID, {host: '0.peerjs.com', port: 443, secure: true}); // Create a new host in PeerJS
+    this.connectedPlayers = []; // The players connected to the host
+  }
+  
+  /**
+   * @function requestTransfer
+   * @param {string} candidate
+   */
+  requestTransfer(candidate) {
+    this.connectedPlayers.forEach((player) => {
+      if (player.user.id === candidate) {
+        player.isTransferElect = true;
+      } else {
+        player.isTransferElect = false;
+      }
+    });
   }
 }
 
@@ -55,5 +70,7 @@ class Player extends User {
    */
   constructor(name) {
     super(name);
+    this.isTransferElect = false;
   }
+
 }

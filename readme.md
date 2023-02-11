@@ -13,12 +13,13 @@ TODO:
 Game creation: 
 1. Create a new Host
 2. Ask for a JSON file with the questions and game setup
-3. Wait for user join signals with the Host name. 
-4. If there's a whitelist, compare the User ID to it.
-5. When a user joins, signal to them that they've joined a game and let them verify that they've joined the right game. 
-6. Once they've verified, either assign a random name to them or let them choose a name.
-7. Check the name against any rules the host has set up.
-8. Once joined fully, put them on a waiting screen. Send the client details on the game.
+3. Create a Game object with it
+4. Wait for user join signals with the Host name. 
+5. If there's a whitelist, compare the User ID to it.
+6. When a user joins, signal to them that they've joined a game and let them verify that they've joined the right game. 
+7. Once they've verified, either assign a random name to them or let them choose a name.
+8. Check the name against any rules the host has set up.
+9. Once joined fully, put them on a waiting screen. Send the client details on the game.
 
 Game joining:
 1. Create a User.

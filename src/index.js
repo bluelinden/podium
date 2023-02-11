@@ -8,4 +8,4 @@ import { } from './styles/cover.sass';
 const testHost = new Host('test');
 const testPlayer = new User('test');
 const testPeer = new Peer('wahahhahahahahaha');
-console.info(testHost.peer.id, testPlayer.peer.id, testPeer.id);
+console.info(testHost.host.id, testPlayer.user.id, testPeer.id);
