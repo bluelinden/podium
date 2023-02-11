@@ -1,10 +1,18 @@
 {
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
   "dependencies": {
     "peerjs": "^1.4.7",
     "webrtc-adapter": "^8.2.0"
   },
+  "private": true,
   "devDependencies": {
+    "css-loader": "^6.7.3",
     "eslint": "^8.34.0",
-    "eslint-config-google": "^0.14.0"
+    "eslint-config-google": "^0.14.0",
+    "style-loader": "^3.3.1",
+    "webpack-cli": "^5.0.1"
   }
 }
