@@ -3,8 +3,9 @@
 
 import {Host, User} from './communication/role-router.mjs';
 import {Game} from './communication/communicate.mjs';
-import Peer from 'peerjs'; 
+import Peer from 'peerjs';
 import { } from './styles/cover.sass';
+import { } from './styles/join.sass';
 const testHost = new Host('test');
 const testPlayer = new User('test');
 const testPeer = new Peer('wahahhahahahahaha');
