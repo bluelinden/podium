@@ -14,7 +14,7 @@ class Host {
    * @description Creates a new host.
    */
   constructor() {
-    const peerID = 'bl-podium-host-' + Math.random().toString(36).substring(2, 15);
+    const peerID = 'bl-podium-host-' + Math.random().toString(36).substring(2, 6);
     this.peer = new Peer(peerID);
   }
 }

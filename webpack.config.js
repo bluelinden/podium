@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // eslint-disable-line no-unused-vars
+const {CleanWebpackPlugin} = require('clean-webpack-plugin'); // eslint-disable-line no-unused-vars
 const { } = require('handlebars-loader');
 const { } = require('style-loader');
 const { } = require('css-loader');
