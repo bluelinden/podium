@@ -1,8 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap')
 
-#podium-wordmark-mainpage
-    font-family: 'Space Mono', monospace
-    color: white
+.front-wrapper
+    #podium-wordmark
+        font-family: 'Space Mono', monospace
+        color: white
+        font-size: 5rem
+
+    #join-button
+        position: absolute
+        a
+            font-family: 'Space Mono', monospace
+            font-size: 1.5rem
+            background: linear-gradient(288deg,#ff0000,#ffff00,#00ff00)
+            background-size: 160% 160%
+            animation: join-animation 8s ease-in-out infinite
+            -webkit-background-clip: text
+            -webkit-text-fill-color: transparent
+            font-weight: bold
+            margin-top: 10px
+            margin-left: 20px
+
+
+
 
 .center-wrapper
     display: flex
@@ -13,3 +32,12 @@
 
 body
     background-color: black
+    margin: 0
+
+@keyframes join-animation 
+    0%
+        background-position: 0% 50%
+    50%
+        background-position: 100% 50%
+    100%
+        background-position: 0% 50%
