@@ -6,6 +6,7 @@
     "extends": "google",
     "overrides": [
     ],
+    "ignorePatterns": ["bundle.js"],
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"

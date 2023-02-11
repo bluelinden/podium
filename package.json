@@ -1,9 +1,10 @@
 {
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack --config webpack.config.js"
   },
   "dependencies": {
+    "handlebars-loader": "^1.7.3",
     "peerjs": "^1.4.7",
     "webrtc-adapter": "^8.2.0"
   },
@@ -12,7 +13,9 @@
     "css-loader": "^6.7.3",
     "eslint": "^8.34.0",
     "eslint-config-google": "^0.14.0",
+    "html-webpack-plugin": "^5.5.0",
     "style-loader": "^3.3.1",
-    "webpack-cli": "^5.0.1"
+    "webpack-cli": "^5.0.1",
+    "yamljs": "^0.3.0"
   }
 }
