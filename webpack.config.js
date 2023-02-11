@@ -5,6 +5,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin'); // eslint-disable-
 const { } = require('handlebars-loader');
 const { } = require('style-loader');
 const { } = require('css-loader');
+const { } = require('sass-loader');
 const { } = require('html-webpack-plugin');
 
 module.exports = {
@@ -39,7 +40,17 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
       },
-
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          // Creates `style` nodes from JS strings
+          'style-loader',
+          // Translates CSS into CommonJS
+          'css-loader',
+          // Compiles Sass to CSS
+          'sass-loader',
+        ],
+      },
     ],
   },
 };
