@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 
-import {Host, User} from './communication/connect.mjs';
+import {Host, User} from './communication/role-router.mjs';
 import {Game} from './communication/communicate.mjs';
 import Peer from 'peerjs'; 
 import { } from './styles/cover.sass';
