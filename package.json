@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "peerjs": "^1.4.7"
+    "peerjs": "^1.4.7",
+    "webrtc-adapter": "^8.2.0"
   },
   "devDependencies": {
     "eslint": "^8.34.0",
