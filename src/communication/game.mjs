@@ -17,7 +17,7 @@ class Game {
       case 'host':
         this.mode = 'host';
         this.data = {};
-    this.host = host;
+        this.host = host;
+    }
   }
 }
-

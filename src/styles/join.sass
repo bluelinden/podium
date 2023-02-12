@@ -4,7 +4,7 @@
     backdrop-filter: blur(20px)
     width: 100vw
     left: 0
-    font-family: 'Space Mono', monospace
+    font-family: 'Space Mono', monospace !important
 
     #close-join-button
         cursor: pointer
@@ -35,6 +35,42 @@
         left: -100vw
         backdrop-filter: blur(0px)
         transition: left 0.5s ease-in-out, backdrop-filter 0.5s ease-in-out
+
+    #join-form
+        
+        .join-box
+            label[for="join-code"]
+                font-size: 1.5rem
+                color: white
+                font-weight: bold
+                display: block
+            
+            #join-code
+                font-size: 10rem
+                color: white
+                font-weight: bold
+                background: none
+                border: none
+                border-bottom: 4px solid white
+                padding: 10px
+                margin: 10px 0
+                outline: none
+                width: 35rem
+                font-family: 'Space Mono', monospace !important
+                text-align: center
+
+            #submit
+                display: block
+                font-size: 3rem
+                color: white
+                font-weight: bold
+                background: none
+                border: none
+                padding: 10px
+                margin: 10px 0
+                outline: none
+                font-family: 'Space Mono', monospace !important
+                cursor: pointer
     
 
 
