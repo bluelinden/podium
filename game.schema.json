@@ -1,0 +1,52 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$id": "http://podium.bluelinden.art/game-schema.json",
+    "properties": {
+        "game": {
+            "description": "Name of the engine used to play this Game",
+            "type": "string"
+        },
+        "type": {
+            "description": "Type of the Game",
+            "type": "string"
+        },
+        "version": {
+            "description": "Version of the engine used to play this Game",
+            "type": "number"
+        },
+        "name": {
+            "description": "Name of the Game",
+            "type": "string"
+        },
+        "questions": {
+            "description": "Array of Questions",
+            "type": "array",
+            "items": {
+                "question": {
+                    "description": "Question",
+                    "type": "string"
+                },
+                "answers": {
+                    "description": "Array of Answers",
+                    "type": "array",
+                    "items": {
+                        "answer": {
+                            "description": "Answer choice",
+                            "type": "string"
+                        },
+                        "uuid"
+                        "correct": {
+                            "description": "Is this the correct answer?",
+                            "type": "boolean"
+                        }
+                    }
+
+                }
+            }
+        }
+
+    },
+    
+
+    ]
+}

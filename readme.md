@@ -54,7 +54,7 @@ Users connect to a specific Host. Games are "shared experiences" that are manage
 * Player of game
     * Player object
 
-## Game
+## Hosted Game
 * Name
 * Question set
 * Game mode (Trivia or Game Show)
@@ -80,4 +80,98 @@ Users connect to a specific Host. Games are "shared experiences" that are manage
     * Version
     * Game ID
     * Level created in (JSON, Web Builder, etc.)
+
+## Player of Game (player-side)
+* Name
+* Score
+* Rank
+* Custom dialogue and behavior
+    * Custom JavaScript code
+    * Custom win/loss text for whole game
+    * Points system code (if not default)
+    * Display logic
+    * Name vetting logic
+* Custom appearance and style
+    * Custom CSS
+    * Custom Logo
+* Metadata
+
+## Question (host-side)
+* Question text
+* Answer (Options or correct text)
+    * Individual option (correct: bool)
+* Answer type
+    * LIVE!
+    * Multiple choice
+    * True/False
+    * Fill in the blank
+    * Short answer
+    * Drag and drop
+    * None
+* Answer order
+    * Random
+    * Alphabetical
+    * Ordered
+* Answer countdown
+* Answer time
+* Answer points
+* Partially correct point multiplier
+* Answer penalty
+* Question media
+    * Media type
+        * Type
+        * Image
+        * Video
+        * Audio
+        * None
+    * Media display
+        * Before question (bool)
+        * During question (bool)
+        * After answered (bool)
+        * During scoring (bool)
+        * On player devices? (bool)
+        * On host devices? (bool)
+* Feedback
+    * Right answer
+    * Partially right answer
+    * Wrong answer
+* Answer display
+    * Multi-choice blocks
+    * True/false blocks
+    * Text
+    * Image
+    * None (save for end of game)
+
+## Question (player-side)
+* Question text
+* Potential answers
+* Answer type
+    * LIVE!
+    * Multiple choice
+    * True/False
+    * Fill in the blank
+    * Short answer
+    * Drag and drop
+    * None
+* Answer order
+    * Random
+    * Alphabetical
+    * Custom
+* Answer countdown
+* Answer time
+* Answer points
+* Partially correct point multiplier
+* Answer penalty
+* Question media
+    * Media type
+        * Type
+        * Image
+        * Video
+        * Audio
+        * None
+    * Media display
+        * Before question (bool)
+        * During question (bool)
+        * After answered (bool)
+        * During scoring (bool)
 

@@ -1,0 +1,88 @@
+{
+    "game": "Podium",
+    "version": "1.0",
+    "type": "podium-game",
+    "name": "Does Blue Linden rock?",
+    "questions": [
+        {
+            "question": "Does Blue Linden rock?",
+            "answers": [
+                {
+                    "answer": "Yes",
+                    "id": "yes",
+                    "correct": true
+                },
+                {
+                    "answer": "No",
+                    "id": "no",
+                    "correct": false
+                }
+            ],
+            "type": "true-false",
+            "answer-sort": "ordered",
+            "answer-order": [
+                "yes",
+                "no"
+            ],
+            "countdown": 5,
+            "time": 5,
+            "points": 1000,
+            "partial-multiplier": 0.3,
+            "penalty": -100,
+            "media": {
+                "type": "image",
+                "content": "https://bluelinden.art/content/images/2022/12/logomark-version-2.svg",
+                "display": {
+                    "before": false,
+                    "during": true,
+                    "after": true,
+                    "scoring": true,
+                    "player": false,
+                    "host": true
+                }
+            },
+            "feedback": {
+                "correct": "Yes, Blue Linden rocks!",
+                "partial":
+                    "Yes, Blue Linden rocks, but more than you think!",
+                "incorrect": "No, Blue Linden rocks!"
+            },
+            "reveal": {
+                "do": true,
+                "type": "text",
+                "answer": "blue linden rocks!"
+            }
+
+
+        },
+        {
+            "question": "Organize these letters in order.",
+            "id": "letters",
+            "answers": [
+                {
+                    "answer": "A",
+                    "id": "b",
+                    "position": 1
+                },
+                {
+                    "answer": "F",
+                    "id": "e",
+                    "position": 2
+                },
+                {
+                    "answer": "W",
+                    "id": "l",
+                    "position": 3
+                },
+                {
+                    "answer": "Z",
+                    "id": "u",
+                    "position": 4
+                }
+            ],
+            "type": "ordering",
+            "answer-sort": "random"
+            "countdown": 5,
+        }
+    ]
+}
