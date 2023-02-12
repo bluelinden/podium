@@ -59,5 +59,25 @@ Users connect to a specific Host. Games are "shared experiences" that are manage
 * Question set
 * Game mode (Trivia or Game Show)
 * Custom dialogue and behavior
+    * Custom JavaScript code
+    * Custom question logic
+    * Custom win/loss text for whole game
+    * Points system code (if not default)
+    * Display logic
+    * Name vetting logic
 * Custom appearance and style
+    * Custom CSS
+    * Custom Logo
 * Metadata
+    * Author
+    * Description
+    * Tags
+    * Date created
+    * Age rating (Everyone, Teen, Mature)
+    * Max number of players
+    * Copyright
+    * License
+    * Version
+    * Game ID
+    * Level created in (JSON, Web Builder, etc.)
+
