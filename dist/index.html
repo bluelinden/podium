@@ -4,14 +4,14 @@
     <script defer src="bundle.js"></script></head>
     <body>
         <div class="front-wrapper">
-                    <div id="join-button"><a class="start-button" onclick="joinGame">> Join a Stage</a></div>
+                    <div id="join-button"><a class="start-button" onclick="openJoin()">> Join a Stage</a></div>
                     <div id="create-button"><a class="start-button" onclick="createGame">Create a Stage <</a></div>
                     <div class="center-wrapper">
                         <div id="podium-wordmark">The Podium</div>
                         <div id="podium-subtitle">The free online trivia night</div>
                     </div>
                     
-                </div>        <div class="join-wrapper">
+                </div>        <div id="join-wrapper" class="hidden">
             <div class="center-wrapper">
                 <form>
                     <div class="join-box">
