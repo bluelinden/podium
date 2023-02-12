@@ -9,13 +9,17 @@ class Game {
   /**
      * @constructor
      * @description Creates a new game.
-     * @param {string} mode - Whether the user is hosting or joining the game.
+     * @param {boolean} mode - If the user is hosting the game.
      * @param {string} host - The host of the game.
      */
   constructor(mode, host) {
     switch (mode) {
-      case 'host':
+      case true:
         this.mode = 'host';
+        this.data = {};
+        this.host = host;
+      case false:
+        this.mode = 'player';
         this.data = {};
         this.host = host;
     }

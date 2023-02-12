@@ -32,11 +32,15 @@
             background-size: 160% 160% !important
             animation: join-animation 8s ease-in-out infinite
             -webkit-background-clip: text !important
-            -webkit-text-fill-color: transparent
+            color: transparent
             font-weight: bold
             font-family: 'Space Mono', monospace
             font-size: 1.8rem
             cursor: pointer
+            &:hover
+                color: white
+                transition: color 0.2s ease-in-out
+            transition: color 0.2s ease-in-out
 
     .center-wrapper
         display: flex

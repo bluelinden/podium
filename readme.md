@@ -41,3 +41,23 @@ Game transfer - Host-elect:
 2. Wait for a message from the host allowing transfer of the game. Receive and store the Game object included within.
 3. Create a new Host and send the ID to the current host.
 4. Switch to Hosting mode upon receiving the message telling all players to switch over.
+
+# How the thing works:
+Users connect to a specific Host. Games are "shared experiences" that are managed by the Host. The user does not connect to a Game, they connect to a Host managing a Game.
+
+# Data structures:
+## User
+* Name
+* PeerJS User
+* Host of game
+    * Game object
+* Player of game
+    * Player object
+
+## Game
+* Name
+* Question set
+* Game mode (Trivia or Game Show)
+* Custom dialogue and behavior
+* Custom appearance and style
+* Metadata

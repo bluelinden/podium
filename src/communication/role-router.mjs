@@ -41,20 +41,6 @@ class Host extends User {
     this.host = new Peer(peerID, {host: '0.peerjs.com', port: 443, secure: true}); // Create a new host in PeerJS
     this.connectedPlayers = []; // The players connected to the host
   }
-  
-  /**
-   * @function requestTransfer
-   * @param {string} candidate
-   */
-  requestTransfer(candidate) {
-    this.connectedPlayers.forEach((player) => {
-      if (player.user.id === candidate) {
-        player.isTransferElect = true;
-      } else {
-        player.isTransferElect = false;
-      }
-    });
-  }
 }
 
 /**

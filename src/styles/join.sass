@@ -13,15 +13,29 @@
         left: 20px
         a
             background: linear-gradient(98deg,#0000ff,#ff00ff,#ff0000)
+            &:hover
+                color: white
+                transition: color 0.2s ease-in-out
+            transition: color 0.2s ease-in-out
 
     .close-button
         background-size: 160% 160% !important
         animation: join-animation 8s ease-in-out infinite
         -webkit-background-clip: text !important
-        -webkit-text-fill-color: transparent
+        color: transparent
         font-weight: bold
         font-family: 'Space Mono', monospace
         font-size: 1.8rem
+
+    .submit-button
+        background-size: 160% 160% !important
+        animation: join-animation 8s ease-in-out infinite
+        -webkit-background-clip: text !important
+        color: transparent
+        font-weight: bold
+        font-family: 'Space Mono', monospace
+        font-size: 1.8rem
+        background: linear-gradient(98deg,#ff0000,#ffff00,#00ff00)
 
 
     .center-wrapper
@@ -54,23 +68,26 @@
                 border-bottom: 4px solid white
                 padding: 10px
                 margin: 10px 0
-                outline: none
                 width: 35rem
                 font-family: 'Space Mono', monospace !important
                 text-align: center
+                outline: none
 
-            #submit
+
+            .submit-button
                 display: block
                 font-size: 3rem
-                color: white
                 font-weight: bold
-                background: none
                 border: none
                 padding: 10px
                 margin: 10px 0
                 outline: none
                 font-family: 'Space Mono', monospace !important
                 cursor: pointer
+                &:hover
+                    color: white
+                    transition: color 0.2s ease-in-out
+                transition: color 0.2s ease-in-out
     
 
 
