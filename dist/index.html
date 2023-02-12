@@ -4,7 +4,7 @@
     <script defer src="bundle.js"></script></head>
     <body>
         <div class="front-wrapper">
-                    <div id="join-button"><a class="start-button" onclick="openJoin()">> Join a Stage</a></div>
+                    <div id="join-button"><a class="start-button" onclick="document.getElementById('join-wrapper').classList.remove('hidden');">> Join a Stage</a></div>
                     <div id="create-button"><a class="start-button" onclick="createGame">Create a Stage <</a></div>
                     <div class="center-wrapper">
                         <div id="podium-wordmark">The Podium</div>
@@ -16,8 +16,9 @@
                 <form>
                     <div class="join-box">
                         <label for="joinCode">Magic Number</label>
-                        <input id="joinCode" type="number" maxlength="5" placeholder="81U3L">
+                        <input id="joinCode" type="text" maxlength="5" placeholder="81U3L">
                         <button type="submit">Join</button>
+                        
                     </div>
                 </form>
             </div>
