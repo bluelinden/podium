@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "http://podium.bluelinden.art/game-schema-v1.json",
+    "$id": "https://podium.bluelinden.art/game-schema-v1.json",
     "required": [
         "game",
         "type",
@@ -8,6 +8,31 @@
         "name",
         "questions"
     ],
+    "if": {
+        "properties": { "gameType": { "const": "game-show" } },
+        "then": {
+            "properties": { 
+                "questions": {
+                    "items": {
+                        "properties": {
+                            "row": {
+                                "description": "Row of the question",
+                                "type": "number"
+                            },
+                            "column": {
+                                "description": "Column of the question",
+                                "type": "number"
+                            },
+                            "category": {
+                                "description": "Category of the question",
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+             }
+        }
+    },    
     "properties": {
 
         "game": {
@@ -15,7 +40,7 @@
             "type": "string",
             "default": "podium"
         },
-        "type": {
+        "gameType": {
             "description": "Type of the Game",
             "type": "string",
             "enum": ["trivia", "game-show"],
@@ -31,38 +56,16 @@
             "type": "string"
         },
         "questions": {
-            "dependentSchemas": {
-                "gameShow": {
-                    "properties": {
-                        "questions": {
-                            "items": {
-                                "properties": {
-                                    "required": [
-                                        "columnID"
-                                    ],
-                                    "columnID": {
-                                        "description": "ID of the column this question belongs to",
-                                        "type": "string"
-                                    },
-                                    "scoreTier": {
-                                        "description": "Score tier of the question",
-                                        "type": "number"
-                                    },
-                                    }
-                                    }
-                            }
-                        }
-                    }
-                }
-            }
-            },
-            "description": "Array of Questions",
             "type": "array",
             "items": {
                 "type": "object",
+                "required": [
+                    "title",
+                    "id"
+                ],
                 "properties": {
-                    "question": {
-                        "description": "Question",
+                    "title": {
+                        "description": "Title of the question",
                         "type": "string"
                     },
                     "id": {
@@ -74,6 +77,10 @@
                         "type": "array",
                         "items": {
                             "type": "object",
+                            "required": [
+                                "answer",
+                                "id"
+                            ],
                             "properties": {
                                 "answer": {
                                     "description": "Answer choice",
@@ -91,12 +98,7 @@
                                     "description": "Order of the answer if in a drag and drop question",
                                     "type": "number"
                                 }
-                        },
-                            
-                        "required": [
-                            "answer", 
-                            "id"
-                        ]
+                        }
 
 
                         }
@@ -106,7 +108,6 @@
             }
         }
 
-    }
-    
-
 }
+}
+
