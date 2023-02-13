@@ -6,7 +6,8 @@
     "name": "Does Blue Linden rock?",
     "questions": [
         {
-            "question": "Does Blue Linden rock?",
+            "title": "Does Blue Linden rock?",
+            "id": "rocks",
             "answers": [
                 {
                     "answer": "Yes",
@@ -57,7 +58,7 @@
 
         },
         {
-            "question": "Organize these letters in order.",
+            "title": "Organize these letters in order.",
             "id": "letters",
             "answers": [
                 {
@@ -81,9 +82,10 @@
                     "position": 4
                 }
             ],
-            "type": "ordering",
-            "answer-sort": "random"
-            "countdown": 5,
+            "type": "drag-and-drop",
+            "answerOrder": {
+                "type": "random"
+            }
         }
     ]
 }

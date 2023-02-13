@@ -8,31 +8,6 @@
         "name",
         "questions"
     ],
-    "if": {
-        "properties": { "gameType": { "const": "game-show" } },
-        "then": {
-            "properties": { 
-                "questions": {
-                    "items": {
-                        "properties": {
-                            "row": {
-                                "description": "Row of the question",
-                                "type": "number"
-                            },
-                            "column": {
-                                "description": "Column of the question",
-                                "type": "number"
-                            },
-                            "category": {
-                                "description": "Category of the question",
-                                "type": "string"
-                            }
-                        }
-                    }
-                }
-             }
-        }
-    },    
     "properties": {
 
         "game": {
@@ -98,16 +73,115 @@
                                     "description": "Order of the answer if in a drag and drop question",
                                     "type": "number"
                                 }
+                            }
                         }
-
-
+                    },
+                    "type": {
+                        "description": "Type of the question",
+                        "type": "string",
+                        "enum": ["multiple-choice", "drag-and-drop", "true-false", "fill-in-the-blank", "short-answer", "live", "none"],
+                        "default": "multiple-choice"
+                    },
+                    "gameShow": {
+                        "properties": {
+                            "row": {
+                                "description": "Row of the question",
+                                "type": "number"
+                            },
+                            "column": {
+                                "description": "Column of the question",
+                                "type": "number"
+                            },
+                            "category": {
+                                "description": "Category of the question",
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "answerOrder": {
+                        "type": "object",
+                        "required": [
+                            "type"
+                        ],
+                        "properties": {
+                            "type": {
+                                "description": "Type of the answer order",
+                                "type": "string",
+                                "enum": ["random", "fixed"],
+                                "default": "random"
+                            },
+                            "order": {
+                                "description": "Order of the answers",
+                                "type": "array",
+                                "items": {
+                                    "type": "number"
+                                }
+                            }
+                        },
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "fixed"
+                                }
+                            }
+                        },
+                        "then": {
+                            "required": [
+                                "order"
+                            ]
+                        }
+                    },
+                    "timers": {
+                        "type": "object",
+                        "required": [
+                            "type"
+                        ],
+                        "properties": {
+                            "type": {
+                                "description": "Type of the timers",
+                                "type": "string",
+                                "enum": ["fixed", "random"],
+                                "default": "fixed"
+                            },
+                            "timers": {
+                                "description": "Various timers for the question",
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "time"
+                                    ],
+                                    "properties": {
+                                        "countdown": {
+                                            "type": "integer",
+                                            "description": "Countdown timer to answers being available to select",
+                                            "default": 5
+                                        },
+                                        "close": {
+                                            "type": "integer",
+                                            "description": "Amount of time answers are available",
+                                            "default": 5
+                                        },
+                                        "reveal": {
+                                            "type": "integer",
+                                            "description": "Amount of time the correct answer is displayed",
+                                            "default": 5
+                                        },
+                                        "ranks": {
+                                            "type": "integer",
+                                            "description": "Amount of time the ranks are displayed",
+                                            "default": 7
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
-
                 }
             }
         }
+    }
+}
 
-}
-}
+
 
