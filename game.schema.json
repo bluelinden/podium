@@ -98,7 +98,7 @@
                             }
                         }
                     },
-                    "answerOrder": {
+                    "answerDisplayOrder": {
                         "type": "object",
                         "required": [
                             "type"
@@ -177,6 +177,62 @@
                             }
                         }
                     }
+                }
+            }
+        },
+        "custom": {
+            "type": "object",
+            "properties": {
+                "dialogue": {
+                    "type": "object",
+                    "properties": {
+                        "correct": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "incorrect": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "timeout": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "partial": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "topRanked": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "firstPlace": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "doBetter": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "scoring": {
+                    "type": "string",
+                    "format": "uri"
                 }
             }
         }

@@ -110,7 +110,6 @@ Users connect to a specific Host. Games are "shared experiences" that are manage
     * None
 * Answer order
     * Random
-    * Alphabetical
     * Ordered
 * Answer countdown
 * Answer time
