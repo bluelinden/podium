@@ -153,24 +153,24 @@
                                     ],
                                     "properties": {
                                         "countdown": {
-                                            "type": "integer",
+                                            "type": "number",
                                             "description": "Countdown timer to answers being available to select",
                                             "default": 5
                                         },
                                         "close": {
-                                            "type": "integer",
+                                            "type": "number",
                                             "description": "Amount of time answers are available",
-                                            "default": 5
+                                            "default": 20
                                         },
                                         "reveal": {
-                                            "type": "integer",
+                                            "type": "number",
                                             "description": "Amount of time the correct answer is displayed",
                                             "default": 5
                                         },
                                         "ranks": {
-                                            "type": "integer",
+                                            "type": "number",
                                             "description": "Amount of time the ranks are displayed",
-                                            "default": 7
+                                            "default": 10
                                         }
                                     }
                                 }
@@ -230,9 +230,21 @@
                         }
                     }
                 },
-                "scoring": {
+                "customJS": {
                     "type": "string",
                     "format": "uri"
+                },
+                "customSchema": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "customCSS": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "joinWarningMessage": {
+                    "type": "string",
+                    "description": "Message to display to the user when they join the game if any custom logic is present, appended to the mandatory Podium-generated message about safety that appears in custom games. The user will not be able to join the game and their browser will not let your code run until they acknowledge the message, so make it convincing."
                 }
             }
         }
