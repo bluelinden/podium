@@ -173,13 +173,3 @@ Users connect to a specific Host. Games are "shared experiences" that are manage
         * During question (bool)
         * After answered (bool)
         * During scoring (bool)
-
-# Podium Scaled
-
-Don't want to need a beefy computer for games with a lot of people? I recommend Podium Scaled, an upcoming server-based version of Podium.
-
-Podium Scaled is still totally open-source, but it requires a server. While Podium regular is serverless other than the PeerJS server required to connect users, Podium Scaled requires a server to host games and communicate with clients.
-* Custom domain and cloud saves
-* Multiple display modes
-* Custom frontend and PeerJS server
-*
