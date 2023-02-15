@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "handlebars-loader": "^1.7.3",
+    "js-event-bus": "^1.1.1",
     "peerjs": "^1.4.7",
     "webrtc-adapter": "^8.2.0"
   },

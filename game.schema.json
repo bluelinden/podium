@@ -1,6 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "https://podium.bluelinden.art/game-schema-v1.json",
+    "$comment": "This schema is intended exclusively for use with the Podium Game Engine. No interoperability should be expected with any other systems, and no effort will be made to be or remain interoperable. If you want a game schema, make your own, and it's totally cool with me if you want to base it on this one. Just don't expect me to do that work. - Blue Linden / Podium Developer",
     "required": [
         "game",
         "type",
@@ -9,11 +10,10 @@
         "questions"
     ],
     "properties": {
-
-        "game": {
+        "engine": {
             "description": "Name of the engine used to play this Game",
             "type": "string",
-            "default": "podium"
+            "default": "The Podium Game 1.0"
         },
         "gameType": {
             "description": "Type of the Game",
