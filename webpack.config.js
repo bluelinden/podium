@@ -7,6 +7,7 @@ const { } = require('style-loader');
 const { } = require('css-loader');
 const { } = require('sass-loader');
 const { } = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -20,6 +21,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'The Podium',
       template: './src/index.hbs',
+    }),
+    new webpack.ProvidePlugin({
+      app: [path.join(__dirname, 'src/event-bus.mjs'), 'default'],
     }),
   ],
   module: {

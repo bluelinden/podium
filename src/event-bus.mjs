@@ -1,4 +1,4 @@
-import('js-event-bus');
+import {default as EventBus} from '../node_modules/js-event-bus/src/index.js';
 
 /*
 
@@ -19,7 +19,7 @@ All events within Podium fall into one of eight categories:
  * @class
  * @classdesc Event bus class
  */
-export default class Bus {
+export class Bus {
   /**
     * @constructor
     */
@@ -34,3 +34,5 @@ export default class Bus {
     this.heartbeat = new EventBus();
   }
 }
+const app = new Bus();
+export default app;
