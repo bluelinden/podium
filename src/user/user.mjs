@@ -1,4 +1,5 @@
 import app from '../event-bus.mjs';
+import Peer from 'peerjs';
 
 /**
  * @class User
@@ -11,15 +12,18 @@ class User {
   * @param {string} name - User's name
   */
   constructor() {
-    this.id = 'bl-podium-user-' + Math.random().toString(36).substring(2, 14);
-    this.peer = new Peer(this.id, {host: '0.peerjs.com', secure: true});
-    this.peer.on('open', (id) => {
-      this.id = id;
-      app.general.emit('userMake', { id, name: this.name });
-    });
+    this.id = Math.random().toString(36).substring(2, 14);
+    this._prefix = 'bl-podium-user-';
+    this.peer = new Peer(this._prefix + this.id, {host: '0.peerjs.com', secure: true});
   }
 }
 
-app.general.on('userMake', (e) => {
-  new User
+app.general.on('makeUser', (e) => {
+  window.currentUser = new User();
+  app.general.emit('userMade', null, {user: window.currentUser});
+  console.log('hello');
+});
+
+app.general.on('userMade', (e) => {
+  console.log(e.user);
 });
