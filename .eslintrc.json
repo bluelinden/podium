@@ -12,5 +12,7 @@
         "sourceType": "module"
     },
     "rules": {
+        // disable max-len
+        "max-len": ["off"]
     }
 }
