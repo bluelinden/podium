@@ -176,5 +176,3 @@ Users connect to a specific Host. Games are "shared experiences" that are manage
 
 # Anti-cheat
 *In a large enough game, there's bound to be someone who modifies the client. My approach to anti-cheat is designed to respect the user. Trust but verify.*
-## When joining:
-1. Do an extremely basic, invisible captcha to make sure the user is a human

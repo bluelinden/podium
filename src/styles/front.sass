@@ -1,16 +1,18 @@
+@use './variables.sass' as vars
 @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap')
+
 
 .front-wrapper
     position: absolute
     width: 100vw
     #podium-wordmark
         font-family: 'Space Mono', monospace
-        color: white
+        color: vars.$pod-front
         font-size: 5rem
 
     #podium-subtitle
         font-family: 'Space Mono', monospace
-        color: white
+        color: vars.$pod-front
         font-weight: bold
         font-size: 1.5rem
 
@@ -38,7 +40,7 @@
             font-size: 2.3rem
             cursor: pointer
             &:hover
-                color: white
+                color: vars.$pod-front
                 transition: color 0.2s ease-in-out
             transition: color 0.2s ease-in-out
 
@@ -50,7 +52,7 @@
         height: 100vh
 
 body
-    background-color: black
+    background-color: vars.$pod-back
     margin: 0
 
 @keyframes join-animation 
