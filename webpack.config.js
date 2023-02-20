@@ -57,4 +57,10 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    alias: {
+      App: path.resolve(__dirname, 'src'),
+      Bus$: path.resolve(__dirname, 'src/event-bus.mjs'),
+    },
+  },
 };

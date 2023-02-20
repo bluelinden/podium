@@ -1,0 +1,56 @@
+@use './variables.sass' as vars
+#new-stage-wrapper
+    position: absolute
+    transition: left 0.5s ease-out, backdrop-filter 0.5s ease-in-out
+    backdrop-filter: blur(20px)
+    width: 100vw
+    left: 0
+    font-family: 'Space Mono', monospace !important
+
+    #close-new-stage-button
+        cursor: pointer
+        position: absolute
+        top: 15px
+        left: 20px
+        a
+            background: linear-gradient(98deg,#0000ff,#ff00ff,#ff0000)
+            &:hover
+                color: vars.$pod-front
+                transition: color 0.2s ease-in-out
+            transition: color 0.2s ease-in-out
+
+    .close-button
+        background-size: 160% 160% !important
+        animation: join-animation 8s ease-in-out infinite
+        -webkit-background-clip: text !important
+        color: transparent
+        font-weight: bold
+        font-family: 'Space Mono', monospace
+        font-size: 2.3rem
+
+    .submit-button
+        background-size: 160% 160% !important
+        animation: join-animation 8s ease-in-out infinite
+        -webkit-background-clip: text !important
+        color: transparent
+        font-weight: bold
+        font-family: 'Space Mono', monospace
+        font-size: 1.8rem
+        background: linear-gradient(98deg,#ff0000,#ffff00,#00ff00)
+
+
+    .center-wrapper
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        height: 100vh
+
+    &.hidden
+        left: -100vw
+        backdrop-filter: blur(0px)
+        transition: left 0.5s ease-in-out, backdrop-filter 0.5s ease-in-out
+
+    #new-stage-form
+        
+        

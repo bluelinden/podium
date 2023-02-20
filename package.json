@@ -5,6 +5,8 @@
     "serve": "webpack serve --config webpack.config.js"
   },
   "dependencies": {
+    "ajv": "^8.12.0",
+    "ajv-formats": "^2.1.1",
     "handlebars-loader": "^1.7.3",
     "js-event-bus": "^1.1.1",
     "peerjs": "^1.4.7",
