@@ -55,20 +55,23 @@ Users connect to a specific Host. Games are "shared experiences" that are manage
     * Player object
 
 ## Hosted Game
-* Name
-* Question set
-* Game mode (Trivia or Game Show)
-* Custom dialogue and behavior
-    * Custom JavaScript code
-    * Custom question logic
-    * Custom win/loss text for whole game
-    * Points system code (if not default)
-    * Display logic
-    * Name vetting logic
-* Custom appearance and style
-    * Custom CSS
-    * Custom Logo
-* Metadata
+* Name - done
+* Question set - partial!
+* Game mode (Trivia or Game Show) - done
+* Custom dialogue and behavior - done
+    * Custom JavaScript URL - done
+    * Custom win/loss text for whole game - done
+    * Custom CSS URL - done
+    * Custom Logo URL - done
+* Game Show mode information
+    * Question boards
+        * Columns
+            * Text
+            * Rows
+                * Question
+                    * Text
+                    * ID
+* Metadata - done
     * Author
     * Description
     * Tags
@@ -97,25 +100,34 @@ Users connect to a specific Host. Games are "shared experiences" that are manage
 * Metadata
 
 ## Question (host-side)
-* Question text
+* Question text - done
 * Answer (Options or correct text)
-    * Individual option (correct: bool)
-* Answer type
-    * LIVE!
-    * Multiple choice
+    * Text
+    * ID
+    * Correct?
+    * Order if in drag'n'drop question
+* Answer type - done
+    * buzzer
+    * Select one
+    * Select all
     * True/False
     * Fill in the blank
     * Short answer
     * Drag and drop
     * None
-* Answer order
+* Answer order - done
     * Random
-    * Ordered
-* Answer countdown
-* Answer time
+    * Ordered by position in array
+* Timers
+    * Answer countdown
+    * Answer submission close
+    * Reveal duration
+    * Ranking duration
+
 * Answer points
-* Partially correct point multiplier
+* Partially correct points
 * Answer penalty
+* Timeout penalty
 * Question media
     * Media type
         * Type

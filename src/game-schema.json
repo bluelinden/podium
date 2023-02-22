@@ -3,17 +3,26 @@
     "$id": "https://podium.bluelinden.art/game-schema-v1.json",
     "$comment": "This schema is intended exclusively for use with the Podium Game Engine. No interoperability should be expected with any other systems, and no effort will be made to be or remain interoperable. If you want a game schema, make your own, and it's totally cool with me if you want to base it on this one. Just don't expect me to do that work. - Blue Linden / Podium Developer",
     "required": [
-        "game",
+        "engine",
         "type",
         "version",
         "name",
         "questions"
     ],
+    "errorMessage": {
+        "required": {
+            "game": "The game doesn't appear to be a Podium game. Change the 'engine' property according to the documentation.",
+            "gameType": "Game must have a type property so the engine knows what to do with it.",
+            "version": "Podium was unable to determine what version of the engine this game uses.",
+            "name": "Game must have a name property so players know what it is.",
+            "questions": "You gotta have questions. This game doesn't have any."
+        }
+    },
     "properties": {
         "engine": {
             "description": "Name of the engine used to play this Game",
             "type": "string",
-            "default": "The Podium Game 1.0"
+            "default": "podium1"
         },
         "gameType": {
             "description": "Type of the Game",
@@ -38,6 +47,12 @@
                     "title",
                     "id"
                 ],
+                "errorMessage": {
+                    "required": {
+                        "title": "Question must have a title property so players know what it is.",
+                        "id": "Question must have a string identifier."
+                    }
+                },
                 "properties": {
                     "title": {
                         "description": "Title of the question",
@@ -53,11 +68,11 @@
                         "items": {
                             "type": "object",
                             "required": [
-                                "answer",
+                                "text",
                                 "id"
                             ],
                             "properties": {
-                                "answer": {
+                                "text": {
                                     "description": "Answer choice",
                                     "type": "string"
                                 },
@@ -73,30 +88,21 @@
                                     "description": "Order of the answer if in a drag and drop question",
                                     "type": "number"
                                 }
+                            },
+                            "errorMessage": {
+                                "required": {
+                                    "answer": "Answer must have a text property so players know what it says.",
+                                    "id": "Answer must have a string identifier."
+                                }
                             }
+
                         }
                     },
                     "type": {
                         "description": "Type of the question",
                         "type": "string",
-                        "enum": ["multiple-choice", "drag-and-drop", "true-false", "fill-in-the-blank", "short-answer", "live", "none"],
-                        "default": "multiple-choice"
-                    },
-                    "gameShow": {
-                        "properties": {
-                            "row": {
-                                "description": "Row of the question",
-                                "type": "number"
-                            },
-                            "column": {
-                                "description": "Column of the question",
-                                "type": "number"
-                            },
-                            "category": {
-                                "description": "Category of the question",
-                                "type": "string"
-                            }
-                        }
+                        "enum": ["selectOne", "selectAll", "dragAndDrop", "trueFalse", "fillInTheBlank", "shortAnswer", "buzzer", "none"],
+                        "default": "selectOne"
                     },
                     "answerDisplayOrder": {
                         "type": "object",
@@ -108,27 +114,8 @@
                                 "description": "Type of the answer order",
                                 "type": "string",
                                 "enum": ["random", "fixed"],
-                                "default": "random"
-                            },
-                            "order": {
-                                "description": "Order of the answers",
-                                "type": "array",
-                                "items": {
-                                    "type": "number"
-                                }
+                                "default": "fixed"
                             }
-                        },
-                        "if": {
-                            "properties": {
-                                "type": {
-                                    "const": "fixed"
-                                }
-                            }
-                        },
-                        "then": {
-                            "required": [
-                                "order"
-                            ]
                         }
                     },
                     "timers": {
@@ -176,6 +163,36 @@
                                 }
                             }
                         }
+                    },
+                    "points": {
+                        "type": "object",
+                        "properties": {
+                            "correct": {
+                                "type": "number",
+                                "description": "Points awarded for a correct answer",
+                                "default": 100
+                            },
+                            "timeScale": {
+                                "type": "number",
+                                "description": "Lowest the time-based point multiplier will go for a correct answer, 1 to disable",
+                                "default": 0.6
+                            },
+                            "incorrect": {
+                                "type": "number",
+                                "description": "Points deducted for an incorrect answer",
+                                "default": 0
+                            },
+                            "partial": {
+                                "type": "number",
+                                "description": "Points awarded for a partial answer",
+                                "default": 300
+                            },
+                            "timeout": {
+                                "type": "number",
+                                "description": "Points deducted for a timeout",
+                                "default": 0
+                            }
+                        }
                     }
                 }
             }
@@ -186,6 +203,12 @@
                 "dialogue": {
                     "type": "object",
                     "properties": {
+                        "intro": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
                         "correct": {
                             "type": "array",
                             "items": {
@@ -242,9 +265,62 @@
                     "type": "string",
                     "format": "uri"
                 },
+                "customLogo": {
+                    "type": "string",
+                    "format": "uri"
+                },
                 "joinWarningMessage": {
                     "type": "string",
-                    "description": "Message to display to the user when they join the game if any custom logic is present, appended to the mandatory Podium-generated message about safety that appears in custom games. The user will not be able to join the game and their browser will not let your code run until they acknowledge the message, so make it convincing."
+                    "description": "Message to display to the user when they join the game if any custom logic is present, appended to the mandatory Podium-generated message about safety that appears in custom games. The user will not be able to join the game and the Podium client will not let your code run until they acknowledge the message, so make it convincing."
+                }
+            }
+        },
+        "metadata": {
+            "type": "object",
+            "properties": {
+                "author": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "dateCreated": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "maturity": {
+                    "type": "string",
+                    "enum": ["everyone", "teen", "adult"]
+                },
+                "maxPlayers": {
+                    "type": "number"
+                },
+                "minPlayers": {
+                    "type": "number"
+                },
+                "version": {
+                    "type": "string"
+                },
+                "license": {
+                    "type": "string"
+                },
+                "language": {
+                    "type": "string"
+                },
+                "copyright": {
+                    "type": "string"
+                },
+                "gameID": {
+                    "type": "string"
+                },
+                "gameBuilder": {
+                    "type": "string"
                 }
             }
         }
