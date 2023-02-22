@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "https://podium.bluelinden.art/game-schema-v1.json",
+    "$id": "https://playpodium.live/game-schema-v1.json",
     "$comment": "This schema is intended exclusively for use with the Podium Game Engine. No interoperability should be expected with any other systems, and no effort will be made to be or remain interoperable. If you want a game schema, make your own, and it's totally cool with me if you want to base it on this one. Just don't expect me to do that work. - Blue Linden / Podium Developer",
     "required": [
         "engine",
@@ -193,6 +193,96 @@
                                 "default": 0
                             }
                         }
+                    },
+                    "media": {
+                        "type": "object",
+                        "properties": {
+                            "type": {
+                                "description": "Type of the media",
+                                "type": "string",
+                                "enum": ["image", "embed"],
+                                "default": "image"
+                            },
+                            "source": {
+                                "description": "embed code or URL of the media",
+                                "type": "string"
+                            },
+                            "caption": {
+                                "description": "Caption of the media",
+                                "type": "string"
+                            },
+                            "display": {
+                                "type": "object",
+                                "properties": {
+                                    "before": {
+                                        "type": "boolean",
+                                        "description": "Display the media during the countdown to answers becoming available",
+                                        "default": false
+                                    },
+                                    "during": {
+                                        "type": "boolean",
+                                        "description": "Display the media during the time answers are available",
+                                        "default": true
+                                    },
+                                    "after": {
+                                        "type": "boolean",
+                                        "description": "Display the media during the time the correct answer is displayed",
+                                        "default": true
+                                    },
+                                    "reveal": {
+                                        "type": "boolean",
+                                        "description": "Display the media during the time the correct answers are displayed",
+                                        "default": false
+                                    },
+                                    "where": {
+                                        "type": "object",
+                                        "properties": {
+                                            "player": {
+                                                "type": "boolean",
+                                                "description": "Display the media on the player's screen",
+                                                "default": true
+                                            },
+                                            "host": {
+                                                "type": "boolean",
+                                                "description": "Display the media on the host's screen",
+                                                "default": true
+                                            },
+                                            "presenter": {
+                                                "type": "boolean",
+                                                "description": "Display the media on the presentation screen",
+                                                "default": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "feedback": {
+                        "type": "object",
+                        "properties": {
+                            "correct": {
+                                "type": "string",
+                                "description": "Feedback for a correct answer"
+                            },
+                            "incorrect": {
+                                "type": "string",
+                                "description": "Feedback for an incorrect answer"
+                            },
+                            "partial": {
+                                "type": "string",
+                                "description": "Feedback for a partially correct answer"
+                            },
+                            "timeout": {
+                                "type": "string",
+                                "description": "Feedback for a timeout"
+                            }
+                        }
+                    },
+                    "reveal": {
+                        "type": "boolean",
+                        "description": "Reveal the correct answer after the question is answered",
+                        "default": true
                     }
                 }
             }
@@ -319,8 +409,34 @@
                 "gameID": {
                     "type": "string"
                 },
-                "gameBuilder": {
-                    "type": "string"
+                "gameURL": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "builder": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "version": {
+                            "type": "string"
+                        },
+                        "url": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "icon": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "license": {
+                            "type": "string"
+                        }
+                    }
                 }
             }
         }
