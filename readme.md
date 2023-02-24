@@ -164,10 +164,6 @@ Users connect to a specific Host. Games are "shared experiences" that are manage
     * Short answer
     * Drag and drop
     * None
-* Answer order
-    * Random
-    * Alphabetical
-    * Custom
 * Answer countdown
 * Answer time
 * Answer points

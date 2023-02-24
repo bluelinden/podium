@@ -1,3 +1,5 @@
+import {app} from 'Bus';
+
 app.display.on('joinWrap', ( e ) => {
   const action = e.action;
   switch (action) {

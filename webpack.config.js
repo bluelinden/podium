@@ -23,7 +23,7 @@ module.exports = {
       template: './src/index.hbs',
     }),
     new webpack.ProvidePlugin({
-      app: [path.join(__dirname, 'src/event-bus.mjs'), 'default'],
+      app: ['src/bus.js', 'app'],
     }),
   ],
   module: {
@@ -60,7 +60,7 @@ module.exports = {
   resolve: {
     alias: {
       App: path.resolve(__dirname, 'src'),
-      Bus$: path.resolve(__dirname, 'src/event-bus.mjs'),
+      Bus$: path.resolve(__dirname, 'src/bus.js'),
     },
   },
 };

@@ -1,4 +1,4 @@
-import app from '../event-bus.mjs';
+import {app} from 'Bus';
 import Peer from 'peerjs';
 
 /**
