@@ -4,7 +4,7 @@ import {app} from 'Bus';
 import Peer from 'peerjs';
 import { } from './user/user.mjs';
 import { } from './styles/main.sass';
-import { } from './display/join.mjs';
+import { } from './pages/join/join.js';
 import './display/display.js';
 
 window.app = app;
