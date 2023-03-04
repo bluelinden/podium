@@ -112,9 +112,6 @@ class Bus {
     this._nameStator = new Stator('user', '');
     this.user = new ProxyModel(this._nameStator);
 
-    this._hostStator = new Stator('host', '');
-    this.host = new ProxyModel(this._hostStator);
-
     this._connectionsStator = new Stator('connections', []);
     this.connections = new ProxyModel(this._antiCheatRelayStator);
 
