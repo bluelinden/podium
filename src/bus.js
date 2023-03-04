@@ -64,20 +64,21 @@ class Stator {
 class ProxyModel {
   /**
    * @constructor
-   * @param {any} model - The model to proxy
+   * @param {any} targetStator - The stator to proxy
    * @return {Proxy} - The proxy
    */
-  constructor(model) {
-    this.model = model;
+  constructor(targetStator) {
+    this.targetStator = targetStator;
     return new Proxy(
         {},
         {
           get: function(target, name) {
-            const repo = getConnection().getRepository(this);
-            if (name in repo) {
-              return repo[name];
-            }
+            return this.targetStator.value;
           }.bind(this.model),
+          set: function(target, name, value) {
+            this.targetStator.value = value;
+            return this.targetStator.value;
+          },
         },
     );
   }
@@ -92,6 +93,7 @@ class Bus {
    * @constructor
    */
   constructor() {
+    // Event buses
     this.input = new EventBus();
     this.general = new EventBus();
     this.display = new EventBus();
@@ -102,7 +104,16 @@ class Bus {
     this.broadcast = new EventBus();
     this.integrity = new EventBus();
     this.stator = new EventBus();
-    this.page = new Stator('page', '');
+
+    // State mechanisms
+    this._pageStator = new Stator('page', '');
+    this.page = new ProxyModel(this._pageStator);
+    this._scoreStator = new Stator('score', 0);
+    this.score = new ProxyModel(this._scoreStator);
+    this._rankStator = new Stator('rank', 0);
+    this.rank = new ProxyModel(this._rankStator);
+    this._nameStator = new Stator('name', '');
+    this.name = new ProxyModel(this._nameStator);
   }
 }
 const app = new Bus();
