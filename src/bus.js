@@ -108,12 +108,18 @@ class Bus {
     // State mechanisms
     this._pageStator = new Stator('page', '');
     this.page = new ProxyModel(this._pageStator);
-    this._scoreStator = new Stator('score', 0);
-    this.score = new ProxyModel(this._scoreStator);
-    this._rankStator = new Stator('rank', 0);
-    this.rank = new ProxyModel(this._rankStator);
-    this._nameStator = new Stator('name', '');
-    this.name = new ProxyModel(this._nameStator);
+
+    this._nameStator = new Stator('user', '');
+    this.user = new ProxyModel(this._nameStator);
+
+    this._hostStator = new Stator('host', '');
+    this.host = new ProxyModel(this._hostStator);
+
+    this._connectionsStator = new Stator('connections', []);
+    this.connections = new ProxyModel(this._antiCheatRelayStator);
+
+    this._gameStator = new Stator('game', {});
+    this.game = new ProxyModel(this._gameStator);
   }
 }
 const app = new Bus();
