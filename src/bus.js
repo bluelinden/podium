@@ -17,14 +17,54 @@ All events within Podium fall into one of nine categories:
 * Integrity - System integrity stuff, like checking if the client is connected to the host, doing periodic mesh stability checks, performing anti-cheat checks, and syncing game state with the host once in a while.
 
 */
+
+/**
+ * @class
+ * @classdesc State updater class
+ */
+class Stator {
+  /**
+   * @return {any} - The current State
+   * @memberof Stator
+   */
+  get state() {
+    return this._state;
+  }
+
+  /**
+   * @param {any} state - The new state
+   * @return {void}
+   */
+  set state(state) {
+    const oldState = this._state;
+    this._state = state;
+    this.updated = new Date();
+    app.stator.emit('stateChange', null, {
+      new: this._state,
+      old: oldState,
+      updated: this.updated,
+      name: this.name,
+    });
+  }
+  /**
+   * @constructor
+   * @param {string} name - The name of the state
+   * @param {any} state - The initial state
+   */
+  constructor(name, state) {
+    this.name = name;
+    this._state = state;
+  }
+}
+
 /**
  * @class
  * @classdesc Event bus class
  */
 class Bus {
   /**
-    * @constructor
-    */
+   * @constructor
+   */
   constructor() {
     this.input = new EventBus();
     this.general = new EventBus();
@@ -35,7 +75,8 @@ class Bus {
     this.interact = new EventBus();
     this.broadcast = new EventBus();
     this.integrity = new EventBus();
+    this.stator = new EventBus();
+    this.page = new Stator('page', '');
   }
 }
 const app = new Bus();
-
