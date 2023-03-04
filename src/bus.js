@@ -5,7 +5,7 @@ export {app};
 
 The Podium Event Manager system - Scalability, reliability, and performance. Without being horrible to maintain.
 
-All events within Podium fall into one of nine categories:
+All events within Podium fall into one of ten categories:
 * Input - Events that are specific to user input, like clicking a button or typing a message.
 * General - Events that are not specific to any particular part of the system
 * Display - Events that are specific to layout and modals
@@ -15,6 +15,7 @@ All events within Podium fall into one of nine categories:
 * Interact - Events that are specific to communications directly with other users, like requesting a host or relay changeover, submitting an answer, or messaging someone else.
 * Broadcast - Events that are broadcasted to all users, like enacting a host changeover or broadcasting a message to all users.
 * Integrity - System integrity stuff, like checking if the client is connected to the host, doing periodic mesh stability checks, performing anti-cheat checks, and syncing game state with the host once in a while.
+* Stator - State management, like the current page. This channel is for state updates. It is not for events that trigger state changes.
 
 */
 
@@ -27,33 +28,58 @@ class Stator {
    * @return {any} - The current State
    * @memberof Stator
    */
-  get state() {
-    return this._state;
+  get value() {
+    return this._value;
   }
 
   /**
-   * @param {any} state - The new state
+   * @param {any} value - The new state
    * @return {void}
    */
-  set state(state) {
-    const oldState = this._state;
-    this._state = state;
+  set value(value) {
+    const oldValue = this._value;
+    this._value = value;
     this.updated = new Date();
-    app.stator.emit('stateChange', null, {
-      new: this._state,
-      old: oldState,
+    app.stator.emit(this.name, null, {
+      new: this._value,
+      old: oldValue,
       updated: this.updated,
-      name: this.name,
     });
   }
   /**
    * @constructor
    * @param {string} name - The name of the state
-   * @param {any} state - The initial state
+   * @param {any} value - The initial state
    */
-  constructor(name, state) {
+  constructor(name, value) {
     this.name = name;
-    this._state = state;
+    this.value = value;
+  }
+}
+
+/**
+ * @class
+ * @classdesc Proxy class
+ */
+class ProxyModel {
+  /**
+   * @constructor
+   * @param {any} model - The model to proxy
+   * @return {Proxy} - The proxy
+   */
+  constructor(model) {
+    this.model = model;
+    return new Proxy(
+        {},
+        {
+          get: function(target, name) {
+            const repo = getConnection().getRepository(this);
+            if (name in repo) {
+              return repo[name];
+            }
+          }.bind(this.model),
+        },
+    );
   }
 }
 
