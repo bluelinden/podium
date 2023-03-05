@@ -75,7 +75,7 @@ class StatorProxy {
     return new Proxy(
         {},
         {
-          get: function(target, name) {
+          get: function(target, prop, name) {
             return this.targetStator.value;
           }.bind(this.model),
           set: function(target, name, value) {
@@ -110,6 +110,8 @@ class Bus {
     this.stator = new EventBus();
 
     // State mechanisms
+
+    // the stator proxies exist so that we can change values at the root of their respective objects, instead of doing app.page.value = 'join', we can do app.page = 'join'.
     this._pageStator = new Stator('page', '', this);
     this.page = new StatorProxy(this._pageStator);
 
