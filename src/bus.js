@@ -1,6 +1,7 @@
 import {default as EventBus} from 'js-event-bus';
 export {app};
 
+
 /*
 
 The Podium Event Manager system - Scalability, reliability, and performance. Without being horrible to maintain.
@@ -37,12 +38,12 @@ class Stator {
    * @return {void}
    */
   set value(value) {
-    const oldValue = this._value;
+    this.oldValue = this._value;
     this._value = value;
     this.updated = new Date();
-    app.stator.emit(this.name, null, {
+    this._eventBus.stator.emit(this.name, null, {
       new: this._value,
-      old: oldValue,
+      old: this.oldValue,
       updated: this.updated,
     });
   }
@@ -50,10 +51,12 @@ class Stator {
    * @constructor
    * @param {string} name - The name of the state
    * @param {any} value - The initial state
+   * @param {EventBus} eventBus - The event bus to use when emitting state changes
    */
-  constructor(name, value) {
+  constructor(name, value, eventBus) {
     this.name = name;
-    this.value = value;
+    this._value = value;
+    this._eventBus = eventBus;
   }
 }
 
@@ -61,7 +64,7 @@ class Stator {
  * @class
  * @classdesc Proxy class
  */
-class ProxyModel {
+class StatorProxy {
   /**
    * @constructor
    * @param {any} targetStator - The stator to proxy
@@ -83,6 +86,7 @@ class ProxyModel {
     );
   }
 }
+
 
 /**
  * @class
@@ -106,17 +110,18 @@ class Bus {
     this.stator = new EventBus();
 
     // State mechanisms
-    this._pageStator = new Stator('page', '');
-    this.page = new ProxyModel(this._pageStator);
+    this._pageStator = new Stator('page', '', this);
+    this.page = new StatorProxy(this._pageStator);
 
-    this._nameStator = new Stator('user', '');
-    this.user = new ProxyModel(this._nameStator);
+    this._nameStator = new Stator('user', {}, this);
+    this.user = new StatorProxy(this._nameStator);
 
-    this._connectionsStator = new Stator('connections', []);
-    this.connections = new ProxyModel(this._antiCheatRelayStator);
+    this._connectionsStator = new Stator('connections', [], this);
+    this.connections = new StatorProxy(this._connectionsStator);
 
-    this._gameStator = new Stator('game', {});
-    this.game = new ProxyModel(this._gameStator);
+    this._currentGameStator = new Stator('currentGame', {}, this);
+    this.currentGame = new StatorProxy(this._gameStator);
   }
 }
+
 const app = new Bus();
